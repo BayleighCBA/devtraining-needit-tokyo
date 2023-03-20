@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_topic">
+    <sys_cb_topic action="INSERT_OR_UPDATE">
+        <applicability/>
+        <applicability_mode>query</applicability_mode>
+        <autopilot_topic>false</autopilot_topic>
+        <category>835d266c972521100f99b6a6f053af58</category>
+        <channels/>
+        <connect_queue/>
+        <description>Viewing NeedIt tickets that are open</description>
+        <expose_on_palette>false</expose_on_palette>
+        <flexible_conversation_switching>false</flexible_conversation_switching>
+        <graph>{
+  "graph_api_version": "1.0.41",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "09e4adda2d224a598b43c90336336128": {
+          "id": "09e4adda2d224a598b43c90336336128",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "82dc720d6ed84efcbcde30faed1b3854": {
+          "id": "82dc720d6ed84efcbcde30faed1b3854",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "b8735e737847479491df5febde97e322": {
+          "stepType": "ReferenceChoicePrompt",
+          "name": "Open Tickets",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Would you like to view an open ticket?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "2e6877f706044ad2aaf9c236b14ce961",
+          "id": "b8735e737847479491df5febde97e322",
+          "mode": "glide_record",
+          "script": "",
+          "metadataScript": "",
+          "cardData": {},
+          "noRecordsResponseMsg": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Sorry i could find any open records."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "condition": {
+            "mode": "glide_query",
+            "value": "active=true^u_requested_for={{vaInputs.user}}"
+          },
+          "hasCardHeader": false,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "",
+            "cardFields": {},
+            "cardDefinition": {}
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "e8385e4366624d13b0b62fe703db668e": {
+          "id": "e8385e4366624d13b0b62fe703db668e",
+          "stepType": "RecordOutput",
+          "name": "Active Tickets",
+          "variableId": "2e6877f706044ad2aaf9c236b14ce961",
+          "cardTemplate": "General",
+          "cardFields": {},
+          "mode": "variable",
+          "tableName": "x_58872_needit_needit",
+          "fields": [
+            "active",
+            "u_requested_for"
+          ],
+          "cardDefinition": {
+            "name": "Record",
+            "value": "General"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "condition": {
+            "mode": "glide_query",
+            "value": ""
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "19288a2075aa40ce94dff4412bbbdd78",
+          "edgeType": "Edge",
+          "source": "b8735e737847479491df5febde97e322",
+          "target": "e8385e4366624d13b0b62fe703db668e",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "d919a970e2c54f1b9f38d242ef5f7898",
+          "edgeType": "Edge",
+          "source": "09e4adda2d224a598b43c90336336128",
+          "target": "b8735e737847479491df5febde97e322",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "484c3e00155640db9885008cc3510e31",
+          "edgeType": "Edge",
+          "source": "e8385e4366624d13b0b62fe703db668e",
+          "target": "82dc720d6ed84efcbcde30faed1b3854",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "3a6e3843b19643798945deba9c2b59b1": {
+      "id": "3a6e3843b19643798945deba9c2b59b1",
+      "name": "LiveAgent_application",
+      "value": {
+        "mode": "simple",
+        "value": null
+      },
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "2e6877f706044ad2aaf9c236b14ce961": {
+      "id": "2e6877f706044ad2aaf9c236b14ce961",
+      "name": "open_tickets",
+      "label": "Open Tickets",
+      "varType": "reference",
+      "table": "x_58872_needit_needit",
+      "category": "vaInputs"
+    }
+  }
+}</graph>
+        <key_phrases>View Open NeedIt Tickets,NeedIt Request,need something</key_phrases>
+        <library>false</library>
+        <live_agent>false</live_agent>
+        <name>View Open NeedIt Tickets</name>
+        <nlu_intent/>
+        <nlu_intent_label/>
+        <nlu_model/>
+        <nlu_model_label/>
+        <nlu_provider/>
+        <palette_label/>
+        <roles/>
+        <secure_custom_input_control>false</secure_custom_input_control>
+        <source_topic_id/>
+        <sys_class_name>sys_cb_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-13 03:50:18</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>80ed46259769e1100f99b6a6f053af84</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>View Open NeedIt Tickets</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_cb_topic_80ed46259769e1100f99b6a6f053af84</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-13 04:02:44</sys_updated_on>
+        <triggerable_by_notification>false</triggerable_by_notification>
+        <type>STANDARD</type>
+        <variables/>
+    </sys_cb_topic>
+    <sys_variable_value action="delete_multiple" query="document_key=80ed46259769e1100f99b6a6f053af84"/>
+</record_update>

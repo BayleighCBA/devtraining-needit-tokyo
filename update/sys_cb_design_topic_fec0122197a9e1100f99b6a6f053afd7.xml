@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="sys_cb_design_topic">
+    <sys_cb_design_topic action="INSERT_OR_UPDATE">
+        <compiled_topic display_value="View Open NeedIt Tickets">fec0122197a9e1100f99b6a6f053afd3</compiled_topic>
+        <design_definition>{"type":"FlowTopic","type":"FlowTopic","triggers":[{"type":"Trigger","name":"7d226bc3e368495fb1cc45ed48c46538","triggerType":"request","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"id":"7d226bc3e368495fb1cc45ed48c46538"}],"goals":[{"name":"primary","trigger_id":"7d226bc3e368495fb1cc45ed48c46538","nodes":[{"type":"StartGoal","type":"StartGoal","goal_id":"primary","greeting_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"09e4adda2d224a598b43c90336336128","name":"Start"},{"type":"TerminateGoal","type":"TerminateGoal","goal_id":"primary","confirmation_msg":{"type":"String","type":"String","mode":"string","value":""},"id":"82dc720d6ed84efcbcde30faed1b3854","name":"End"},{"type":"ReferenceChoiceInputPrompt","type":"ReferenceChoiceInputPrompt","mode":"glide_record","id":"b8735e737847479491df5febde97e322","name":"Open Tickets","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"variable_id":"2e6877f706044ad2aaf9c236b14ce961","message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Would you like to view an open ticket?\", vaContext.getRequesterLang())"},"skippable":{"type":"Applicability","type":"Applicability","mode":"script","value":"false"},"nlu_entity_binding":{"type":"NLUEntityBinding","allow_text_input":false,"use_confirmation_prompt":true},"expression_mode":"simple","metadataScript":"","cardName":"","cardFields":[],"no_options_found_message":{"type":"String","type":"String","mode":"string","value":"gs.getMessageLang(\"Sorry i could find any open records.\", vaContext.getRequesterLang())"},"condition":{"type":"Condition","mode":"glide_query","value":"active=true^u_requested_for={{vaInputs.user}}"}},{"type":"RecordOutputPrompt","type":"RecordOutputPrompt","mode":"variable","table":"x_58872_needit_needit","variable_id":"2e6877f706044ad2aaf9c236b14ce961","fields":["active","u_requested_for"],"id":"e8385e4366624d13b0b62fe703db668e","name":"Active Tickets","goal_id":"primary","applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"condition":{"type":"Condition","mode":"glide_query","value":""}}],"edges":[{"type":"Edge","source_node_id":"b8735e737847479491df5febde97e322","target_node_id":"e8385e4366624d13b0b62fe703db668e","id":"19288a2075aa40ce94dff4412bbbdd78"},{"type":"Edge","source_node_id":"09e4adda2d224a598b43c90336336128","target_node_id":"b8735e737847479491df5febde97e322","id":"d919a970e2c54f1b9f38d242ef5f7898"},{"type":"Edge","source_node_id":"e8385e4366624d13b0b62fe703db668e","target_node_id":"82dc720d6ed84efcbcde30faed1b3854","id":"484c3e00155640db9885008cc3510e31"}],"id":"primary"}],"script_variables":[{"type":"VariableDto","type":"String","name":"LiveAgent_application","value":{"type":"String","type":"String","mode":"string"},"list":false,"id":"3a6e3843b19643798945deba9c2b59b1","formatType":"text","secure":false,"sensitive":false}],"glide_variables":[{"type":"Reference","type":"Reference","table":"sys_user","id":"current-user","name":"user","formatType":"text","secure":false,"sensitive":false,"list":false},{"type":"Reference","type":"Reference","table":"x_58872_needit_needit","reference_qualifier_condition":"active=true^u_requested_for={{vaInputs.user}}","id":"2e6877f706044ad2aaf9c236b14ce961","name":"open_tickets","formatType":"text","secure":false,"sensitive":false,"list":false}],"applicability":{"type":"Applicability","type":"Applicability","mode":"script","value":"true"},"roles":[],"scope":"6ead8e780f603200cd674f8ce1050ed1","domain":"global","topic_type":"STANDARD","channels":[],"id":"80ed46259769e1100f99b6a6f053af84","name":"View Open NeedIt Tickets","key_phrases":["View Open NeedIt Tickets","NeedIt Request","need something"],"nlu_provider":"","nlu_model":"","nlu_model_label":"","nlu_intent":"","nlu_intent_label":"","flexible_conversation_switching":false,"autopilot_topic":false,"design_categories":[{"name":null,"visible":false,"sysId":"835d266c972521100f99b6a6f053af58"}],"triggerable_by_notification":false,"library":false,"readOnly":false,"nluMapping":"[]"}</design_definition>
+        <design_topic_id>80ed46259769e1100f99b6a6f053af84</design_topic_id>
+        <graph>{
+  "graph_api_version": "1.0.41",
+  "goals": {
+    "primary": {
+      "id": "primary",
+      "trigger": {
+        "type": "primary"
+      },
+      "name": "primary",
+      "applicability": "",
+      "description": "",
+      "nodes": {
+        "09e4adda2d224a598b43c90336336128": {
+          "id": "09e4adda2d224a598b43c90336336128",
+          "stepType": "Start",
+          "name": "Start",
+          "greetingResponse": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "82dc720d6ed84efcbcde30faed1b3854": {
+          "id": "82dc720d6ed84efcbcde30faed1b3854",
+          "stepType": "TerminateGoal",
+          "name": "End",
+          "confirmationMessage": {
+            "mode": "simple",
+            "value": ""
+          }
+        },
+        "b8735e737847479491df5febde97e322": {
+          "stepType": "ReferenceChoicePrompt",
+          "name": "Open Tickets",
+          "prompt": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Would you like to view an open ticket?"
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "confirmMessage": {
+            "value": "",
+            "mode": "simple"
+          },
+          "acknowledgeMsg": {
+            "value": "",
+            "mode": "simple"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "skippable": {
+            "value": "",
+            "mode": "query"
+          },
+          "defaultValue": {
+            "value": "",
+            "mode": "simple"
+          },
+          "variableId": "2e6877f706044ad2aaf9c236b14ce961",
+          "id": "b8735e737847479491df5febde97e322",
+          "mode": "glide_record",
+          "script": "",
+          "metadataScript": "",
+          "cardData": {},
+          "noRecordsResponseMsg": {
+            "value": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "text": "Sorry i could find any open records."
+                  }
+                ]
+              }
+            ],
+            "mode": "simple"
+          },
+          "condition": {
+            "mode": "glide_query",
+            "value": "active=true^u_requested_for={{vaInputs.user}}"
+          },
+          "hasCardHeader": false,
+          "cardMetadata": {
+            "mode": "card",
+            "metadataScript": "",
+            "cardTemplate": "",
+            "cardFields": {},
+            "cardDefinition": {}
+          },
+          "withNluUserInput": false,
+          "skipIfFulfilled": false
+        },
+        "e8385e4366624d13b0b62fe703db668e": {
+          "id": "e8385e4366624d13b0b62fe703db668e",
+          "stepType": "RecordOutput",
+          "name": "Active Tickets",
+          "variableId": "2e6877f706044ad2aaf9c236b14ce961",
+          "cardTemplate": "General",
+          "cardFields": {},
+          "mode": "variable",
+          "tableName": "x_58872_needit_needit",
+          "fields": [
+            "active",
+            "u_requested_for"
+          ],
+          "cardDefinition": {
+            "name": "Record",
+            "value": "General"
+          },
+          "applicability": {
+            "value": "",
+            "mode": "query"
+          },
+          "condition": {
+            "mode": "glide_query",
+            "value": ""
+          }
+        }
+      },
+      "edges": [
+        {
+          "id": "19288a2075aa40ce94dff4412bbbdd78",
+          "edgeType": "Edge",
+          "source": "b8735e737847479491df5febde97e322",
+          "target": "e8385e4366624d13b0b62fe703db668e",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "d919a970e2c54f1b9f38d242ef5f7898",
+          "edgeType": "Edge",
+          "source": "09e4adda2d224a598b43c90336336128",
+          "target": "b8735e737847479491df5febde97e322",
+          "sourcePort": "",
+          "targetPort": ""
+        },
+        {
+          "id": "484c3e00155640db9885008cc3510e31",
+          "edgeType": "Edge",
+          "source": "e8385e4366624d13b0b62fe703db668e",
+          "target": "82dc720d6ed84efcbcde30faed1b3854",
+          "sourcePort": "",
+          "targetPort": ""
+        }
+      ]
+    }
+  },
+  "variables": {
+    "3a6e3843b19643798945deba9c2b59b1": {
+      "id": "3a6e3843b19643798945deba9c2b59b1",
+      "name": "LiveAgent_application",
+      "value": {
+        "mode": "simple",
+        "value": null
+      },
+      "varType": "script",
+      "category": "vaVars"
+    },
+    "current-user": {
+      "category": "vaInputs",
+      "id": "current-user",
+      "label": "User",
+      "name": "user",
+      "table": "sys_user",
+      "varType": "reference"
+    },
+    "2e6877f706044ad2aaf9c236b14ce961": {
+      "id": "2e6877f706044ad2aaf9c236b14ce961",
+      "name": "open_tickets",
+      "label": "Open Tickets",
+      "varType": "reference",
+      "table": "x_58872_needit_needit",
+      "category": "vaInputs"
+    }
+  }
+}</graph>
+        <name>View Open NeedIt Tickets</name>
+        <sys_class_name>sys_cb_design_topic</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-03-13 04:03:04</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_id>fec0122197a9e1100f99b6a6f053afd7</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>FlowTopic</sys_name>
+        <sys_package display_value="NeedIt" source="x_58872_needit">6ead8e780f603200cd674f8ce1050ed1</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="NeedIt">6ead8e780f603200cd674f8ce1050ed1</sys_scope>
+        <sys_update_name>sys_cb_design_topic_fec0122197a9e1100f99b6a6f053afd7</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-03-13 04:03:04</sys_updated_on>
+        <type>FlowTopic</type>
+    </sys_cb_design_topic>
+</record_update>
